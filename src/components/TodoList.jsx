@@ -5,15 +5,18 @@ function TodoList({ todos, handleChange, action}) {
   return (
     <>
         <ul>
-            {todos.map(todo => (
-                <ListItems
-                    key={todo.id}
-                    id={todo.id}
-                    todo={todo}
-                    handleChange={() => handleChange(todo.id)}
-                    onClick={() => action(todo.id)}
-                />
-            ))}
+            {todos.map(todo => {
+              const {id} = todo
+             return ( 
+              <ListItems
+                  key={id}
+                  id={id}
+                  todo={todo}
+                  handleChange={() => handleChange(id)}
+                  onClick={() => action(id)}
+              />)
+            }
+            )}
         </ul>
     </>
   )
