@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
+import Input from './components/Input';
 import Button from './components/Button';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,14 +18,20 @@ function App() {
   function handleAddTodos() {
     if (inputValue.trim() !== "") {
       setTodos(prevTodos => (
-        [ ...prevTodos, {
+        [{
           id: uuidv4(),
           text: inputValue,
           checked: false
-        }]
+        }, ...prevTodos]
       ))
     }
     setInputValue("");
+  }
+
+  function handleKeyPress(e){
+    if(e.key === "Enter") {
+      handleAddTodos()
+    }
   }
   
   function handleDeleteTodo(id) {
@@ -48,13 +55,14 @@ function App() {
     <div className='card'>
       <h1>Todo List</h1>
       <div className='inputContainer'>
-        <input
+        <Input
               className="text-input" 
               type="text" 
               value={inputValue} 
               name="my-todos"
               placeholder='Enter Todo' 
-              onChange={(e) => setInputValue(e.target.value)} 
+              handleInputChange={(e) => setInputValue(e.target.value)} 
+              keyPress={handleKeyPress}
         />
         <Button 
             action={handleAddTodos} 
@@ -66,7 +74,7 @@ function App() {
       <div>
         <TodoList
           todos={todos}
-          handleChange={handleCheckboxChange}
+          handleInputChange={handleCheckboxChange}
           action={handleDeleteTodo}
         />
       </div> 

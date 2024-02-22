@@ -9,8 +9,9 @@ function Input(props) {
             type={props.type} 
             value={props.value} 
             name={props.inputName} 
-            onChange={props.handleChange}
-            checked={props.checked} 
+            onChange={props.handleInputChange}
+            checked={props.checked}
+            onKeyPress={props.keyPress} 
         />
     </>
   )

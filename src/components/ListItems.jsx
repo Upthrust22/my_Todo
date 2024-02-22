@@ -2,7 +2,7 @@ import React from 'react';
 import Input from './Input';
 import Button from './Button';
 
-function ListItems({ todo, handleChange, value, onClick }) {
+function ListItems({ todo, handleInputChange, value, onClick }) {
   return (
     <>
         <li className={todo.checked ? "completed" : ""}>
@@ -11,7 +11,7 @@ function ListItems({ todo, handleChange, value, onClick }) {
                 type="checkbox"
                 checked={todo.checked}
                 value={value}
-                handleChange={handleChange}
+                handleInputChange={handleInputChange}
                 todo={todo}
             />
             {todo.text}
