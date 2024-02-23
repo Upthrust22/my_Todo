@@ -1,7 +1,7 @@
 import React from 'react'
 import ListItems from './ListItems'
 
-function TodoList({ todos, handleInputChange, action}) {
+function TodoList({ todos, handleChecked, handleDelete}) {
   return (
     <>
         <ul>
@@ -12,8 +12,8 @@ function TodoList({ todos, handleInputChange, action}) {
                   key={id}
                   id={id}
                   todo={todo}
-                  handleInputChange={() => handleInputChange(id)}
-                  onClick={() => action(id)}
+                  handleChecked={handleChecked}
+                  handleDelete={handleDelete}
               />)
             }
             )}

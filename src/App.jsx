@@ -65,7 +65,7 @@ function App() {
               keyPress={handleKeyPress}
         />
         <Button 
-            action={handleAddTodos} 
+            handleClick={handleAddTodos} 
             className="btn btn-add"
             title="Add"
         />
@@ -74,8 +74,8 @@ function App() {
       <div>
         <TodoList
           todos={todos}
-          handleInputChange={handleCheckboxChange}
-          action={handleDeleteTodo}
+          handleChecked={handleCheckboxChange}
+          handleDelete={handleDeleteTodo}
         />
       </div> 
     </div>

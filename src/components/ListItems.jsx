@@ -2,21 +2,21 @@ import React from 'react';
 import Input from './Input';
 import Button from './Button';
 
-function ListItems({ todo, handleInputChange, value, onClick }) {
+function ListItems({ todo, handleChecked, value, handleDelete }) {
+  const {checked, id,} = todo
   return (
     <>
-        <li className={todo.checked ? "completed" : ""}>
+        <li className={checked ? "completed" : ""}>
             <Input
                 className="checkbox" 
                 type="checkbox"
-                checked={todo.checked}
+                checked={checked}
                 value={value}
-                handleInputChange={handleInputChange}
-                todo={todo}
+                handleInputChange={() => handleChecked(id)}
             />
             {todo.text}
             <Button
-                action={onClick}
+                handleClick={() => handleDelete(id)}
                 className="btn btn-delete"
                 title="Delete"
             />
